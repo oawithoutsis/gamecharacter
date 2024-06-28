@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML+CSS box</title>
+  <link rel="stylesheet" href="box.css" />
+  <style>
+    /* .container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .expanded-image {
+      position: absolute;
+      top: 0;
+      left: 200px;
+      display: none;
+    } */
+  </style>
+</head>
+
+<body>
+  <section>
+    <div><img src="animal/1.png" alt="" tips="1" /></div>
+    <div><img src="animal/2.png" alt="" tips="2" /></div>
+    <div><img src="animal/3.png" alt="" tips="3" /></div>
+    <div><img src="animal/4.png" alt="" tips="4" /></div>
+    <div><img src="animal/5.png" alt="" tips="5" /></div>
+    <div><img src="animal/6.png" alt="" tips="6" /></div>
+    <div><img src="card/baiqi lang.png" alt="" /></div>
+    <div><img src="card/lishen shizi.png" alt="" /></div>
+    <div><img src="card/lujinghe baozi.png" alt="" /></div>
+    <div><img src="card/xiamingxing gou.png" alt="" /></div>
+    <div><img src="card/xumo huli.png" alt="" /></div>
+    <div><img src="card/yexuan he.png" alt="" /></div>
+  </section>
+
+  <img src="" class="newImg" alt="">
+
+  <script>
+    const section = document.querySelector('section')
+    const newImg = document.querySelector('.newImg')
+
+    section.onclick = function (e) {
+      e.stopPropagation()
+      if (this.className == 'choose') {
+        this.className = ''
+      } else {
+        this.className = 'choose'
+      }
+    }
+
+    document.body.onclick = function () {
+      if (section.className == 'choose') {
+        section.className = ''
+        newImg.style.display = 'none'
+      }
+    }
+
+    for (let i = 0, len = section.children.length - 6; i < len; i++) {
+      section.children[i].children[0].onclick = function (e) {
+        if (section.className == 'choose') {
+          e.stopPropagation()
+          newImg.src = `./pic/${this.getAttribute('tips')}.png`
+          newImg.style.display = 'block'
+        } else {
+          section.className = 'choose'
+        }
+      }
+    }
+
+    newImg.onclick = function(e) {
+      e.stopPropagation()
+    }
+
+    /* const images = document.querySelectorAll('.image');
+    const expandedImage = document.getElementById('expandedImage');
+    const expandedImg = document.getElementById('expandedImg');
+
+    let isExpanded = false;
+
+    images.forEach(image => {
+      image.addEventListener('mouseenter', () => {
+        if (!isExpanded) {
+          images.forEach(img => {
+            if (img !== image) {
+              img.style.transform = 'paused';
+            }
+          });
+        }
+      });
+
+      image.addEventListener('mouseleave', () => {
+        if (!isExpanded) {
+          images.forEach(img => {
+            img.style.transform = 'running';
+          });
+        }
+      });
+
+      image.addEventListener('click', () => {
+        if (isExpanded) {
+          expandedImage.style.display = 'none';
+          isExpanded = false;
+          images.forEach(img => {
+            img.style.animationPlayState = 'running';
+          });
+        } else {
+          const imageName = image.id + '.png';
+          expandedImg.src = imageName; // Change path to the desired image
+          expandedImage.style.display = 'block';
+          isExpanded = true;
+          images.forEach(img => {
+            img.style.animationPlayState = 'paused';
+          });
+        }
+      });
+    }); */
+  </script>
+
+</body>
+
+</html>
